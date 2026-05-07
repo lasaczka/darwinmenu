@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Darwin Menu\n"
 "Report-Msgid-Bugs-To: https://github.com/lasaczka\n"
 "POT-Creation-Date: 2025-11-14 01:09+0300\n"
-"PO-Revision-Date: 2025-11-15 20:13+0100\n"
+"PO-Revision-Date: 2026-03-13 10:37+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
 "Language: nl_NL\n"
@@ -66,43 +66,58 @@ msgctxt "i18n@MainMenuButton.qml:136"
 msgid "About This PC"
 msgstr "Over deze computer"
 
-#: contents/ui/MainMenuButton.qml:152
-msgctxt "i18n@MainMenuButton.qml:152"
+#: contents/ui/MainMenuButton.qml:154
+msgctxt "i18n@MainMenuButton.qml:154"
+msgid "Recent Items"
+msgstr "Recente items"
+
+#: contents/ui/MainMenuButton.qml:176
+msgctxt "i18n@MainMenuButton.qml:176"
+msgid "Clear Menu"
+msgstr "Menu wissen"
+
+#: contents/ui/MainMenuButton.qml:182
+msgctxt "i18n@MainMenuButton.qml:182"
+msgid "Refresh"
+msgstr "Herladen"
+
+#: contents/ui/MainMenuButton.qml:193
+msgctxt "i18n@MainMenuButton.qml:193"
 msgid "Commands"
 msgstr "Opdrachten"
 
-#: contents/ui/MainMenuButton.qml:189
-msgctxt "i18n@MainMenuButton.qml:189"
+#: contents/ui/MainMenuButton.qml:228
+msgctxt "i18n@MainMenuButton.qml:228"
 msgid "System Settings..."
 msgstr "Systeeminstellingen…"
 
-#: contents/ui/MainMenuButton.qml:196
-msgctxt "i18n@MainMenuButton.qml:196"
+#: contents/ui/MainMenuButton.qml:236
+msgctxt "i18n@MainMenuButton.qml:236"
 msgid "App Store..."
 msgstr "Appwinkel…"
 
-#: contents/ui/MainMenuButton.qml:204
-msgctxt "i18n@MainMenuButton.qml:204"
+#: contents/ui/MainMenuButton.qml:245
+msgctxt "i18n@MainMenuButton.qml:245"
 msgid "Force Quit..."
 msgstr "Gedwongen afsluiten…"
 
-#: contents/ui/MainMenuButton.qml:213
-msgctxt "i18n@MainMenuButton.qml:213"
+#: contents/ui/MainMenuButton.qml:255
+msgctxt "i18n@MainMenuButton.qml:255"
 msgid "Sleep"
 msgstr "Slaapstand"
 
-#: contents/ui/MainMenuButton.qml:219
-msgctxt "i18n@MainMenuButton.qml:219"
+#: contents/ui/MainMenuButton.qml:262
+msgctxt "i18n@MainMenuButton.qml:262"
 msgid "Restart..."
 msgstr "Herstarten…"
 
-#: contents/ui/MainMenuButton.qml:225
-msgctxt "i18n@MainMenuButton.qml:225"
+#: contents/ui/MainMenuButton.qml:269
+msgctxt "i18n@MainMenuButton.qml:269"
 msgid "Shut Down..."
 msgstr "Afsluiten…"
 
-#: contents/ui/MainMenuButton.qml:233
-msgctxt "i18n@MainMenuButton.qml:233"
+#: contents/ui/MainMenuButton.qml:278
+msgctxt "i18n@MainMenuButton.qml:278"
 msgid "Lock Screen"
 msgstr "Scherm vergrendelen"
 
@@ -143,23 +158,38 @@ msgstr "Naam van menu met eigen opdrachten"
 
 #: contents/ui/config/configCustom.qml:40
 msgctxt "i18n@configCustom.qml:40"
+msgid "Show icons for custom commands"
+msgstr "Pictogrammen naast eigen opdrachten tonen"
+
+#: contents/ui/config/configCustom.qml:48
+msgctxt "i18n@configCustom.qml:48"
+msgid "Default icon name"
+msgstr "Standaard pictogramnaam"
+
+#: contents/ui/config/configCustom.qml:64
+msgctxt "i18n@configCustom.qml:64"
 msgid "Add command"
 msgstr "Opdracht toevoegen"
 
-#: contents/ui/config/configCustom.qml:51
-msgctxt "i18n@configCustom.qml:51"
+#: contents/ui/config/configCustom.qml:77
+msgctxt "i18n@configCustom.qml:77"
 msgid "Clear command list"
 msgstr "Opdrachtenlijst wissen"
 
-#: contents/ui/config/configCustom.qml:89
-msgctxt "i18n@configCustom.qml:89"
+#: contents/ui/config/configCustom.qml:139
+msgctxt "i18n@configCustom.qml:139"
 msgid "Title"
-msgstr "Naam"
+msgstr "Titel"
 
-#: contents/ui/config/configCustom.qml:99
-msgctxt "i18n@configCustom.qml:99"
+#: contents/ui/config/configCustom.qml:147
+msgctxt "i18n@configCustom.qml:147"
 msgid "Command"
 msgstr "Opdracht"
+
+#: contents/ui/config/configCustom.qml:155
+msgctxt "i18n@configCustom.qml:155"
+msgid "Icon"
+msgstr "Pictogram"
 
 #: contents/ui/config/configGeneral.qml:36
 msgctxt "i18n@configGeneral.qml:36"
@@ -181,13 +211,23 @@ msgctxt "i18n@configGeneral.qml:60"
 msgid "Global shortcut opens:"
 msgstr "Openen met globale sneltoets:"
 
-#: contents/ui/config/configGeneral.qml:61
-msgctxt "i18n@configGeneral.qml:61"
+#: contents/ui/config/configGeneral.qml:68
+msgctxt "i18n@configGeneral.qml:68"
+msgid "Menu items"
+msgstr "Menu-items"
+
+#: contents/ui/config/configGeneral.qml:69
+msgctxt "i18n@configGeneral.qml:69"
+msgid "Show icons next to menu items"
+msgstr "Pictogrammen naast menu-items tonen"
+
+#: contents/ui/config/configGeneral.qml:77
+msgctxt "i18n@configGeneral.qml:77"
 msgid "Plasmoid"
 msgstr "Plasmoid"
 
-#: contents/ui/config/configGeneral.qml:70
-msgctxt "i18n@configGeneral.qml:70"
+#: contents/ui/config/configGeneral.qml:86
+msgctxt "i18n@configGeneral.qml:86"
 msgid "Icon"
 msgstr "Pictogram"
 
