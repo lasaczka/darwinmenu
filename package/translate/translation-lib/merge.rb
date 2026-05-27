@@ -26,6 +26,22 @@ def extract_id(entry)
     line.sub(/^msgid\s*/, '').strip
 end
 
+def extract_msgstr(entry)
+    line = entry.find { |l| l.start_with?('msgstr') }
+    return nil unless line
+    line.sub(/^msgstr\s*/, '').strip
+end
+
+def extract_msgctxt(entry)
+    line = entry.find { |l| l.start_with?('msgctxt') }
+    return nil unless line
+    line.sub(/^msgctxt\s*/, '').strip
+end
+
+def has_translation?(entry)
+    entry.any? { |l| l.start_with?('msgstr') && l !~ /^msgstr\s*""\s*$/ }
+end
+
 Color.echo "[merge] Updating .po files...", :cyan
 
 unless File.exist?(TEMPLATE)
@@ -35,66 +51,79 @@ end
 
 template_lines   = File.readlines(TEMPLATE)
 template_entries = parse_entries(template_lines)
-template_entries.reject! { |e| extract_id(e) == '""' }
+
+# Slipts .pot header (msgid "")
+pot_header  = template_entries.find  { |e| extract_id(e) == '""' }
+pot_entries = template_entries.reject { |e| extract_id(e) == '""' }
 
 Dir.glob("#{PO_DIR}/*.po").each do |po_path|
     Color.echo "[merge] Updating #{File.basename(po_path)}", :blue
 
-    po_lines = File.readlines(po_path)
+    po_lines   = File.readlines(po_path)
     po_entries = parse_entries(po_lines)
-    po_entries.reject! { |e| extract_id(e) == '""' }
 
-    seen = {}
-    deduped_po = []
+    # Keep .po header
+    po_header  = po_entries.find  { |e| extract_id(e) == '""' }
+    po_entries = po_entries.reject { |e| extract_id(e) == '""' }
+
+    # Build index of existing translations: msgid => entry. The key includes msgctxt to distinguish entries with context
+    po_index = {}
     po_entries.each do |entry|
-        id = extract_id(entry)
-        if seen[id]
-            Color.echo "  - Removed duplicate: #{id}", :dim
-            next
-        end
-        seen[id] = true
-        deduped_po << entry
+        id  = extract_id(entry)
+        ctx = extract_msgctxt(entry)
+        key = "#{ctx}|#{id}"
+        po_index[key] = entry
     end
 
-    po_ids  = deduped_po.map { |e| extract_id(e) }
-    pot_ids = template_entries.map { |e| extract_id(e) }
-    new_ids = pot_ids - po_ids
+    # Rebuild the .po file using the .pot file as a base. For each entry in the .pot file, search for an existing translation in the .po file
+    new_entries = pot_entries.map do |pot_entry|
+        id  = extract_id(pot_entry)
+        ctx = extract_msgctxt(pot_entry)
+        key = "#{ctx}|#{id}"
 
-    Color.echo "New entries to add: #{new_ids.size}", :cyan
+        existing = po_index[key] || po_index.values.find { |e| extract_id(e) == id }
+
+        if existing && has_translation?(existing)
+            msgstr = existing.find { |l| l.start_with?('msgstr') }
+            pot_entry.map { |l| l.start_with?('msgstr') ? msgstr : l }
+        else
+            pot_entry.map { |l| l.start_with?('msgstr') ? "msgstr \"\"\n" : l }
+        end
+    end
+
+    new_ids     = pot_entries.map { |e| extract_id(e) } -
+                  po_entries.map  { |e| extract_id(e) }
+    Color.echo "  New entries: #{new_ids.size}", :cyan
     new_ids.each { |id| Color.echo "    + #{id}", :yellow }
 
-    new_entries = template_entries.select { |e| new_ids.include?(extract_id(e)) }.map do |entry|
-        entry.map { |line| line.start_with?('msgstr') ? "msgstr \"\"\n" : line }
-    end
+    # If .po header doesn't exist, use .pot header instead
+    header = po_header || pot_header
 
-    merged = (deduped_po + new_entries).map { |e| e.join }.join("\n\n") + "\n"
+    parts  = []
+    parts << header.join if header
+    parts += new_entries.map { |e| e.join }
+    merged = parts.join("\n\n") + "\n"
+
     File.write(po_path, merged)
 end
 
 Color.echo "[merge] Done merging messages", :green
 Color.echo "[merge] Translation progress:", :cyan
 
-template_count = template_entries.count
-
+template_count = pot_entries.count
 rows = []
 rows << "| Locale   | Lines   | % Done |"
 rows << "|----------|---------|--------|"
 rows << "| Template | #{template_count.to_s.rjust(7)} |        |"
 
 Dir.glob("#{PO_DIR}/*.po").sort.each do |po_path|
-    locale = File.basename(po_path, '.po')
-    po_lines = File.readlines(po_path)
-    po_entries = parse_entries(po_lines)
-    po_entries.reject! { |e| extract_id(e) == '""' }
-
-    translated = po_entries.count do |entry|
-        entry.any? { |l| l.start_with?('msgstr') && l !~ /^msgstr\s*""\s*$/ }
-    end
-
-    percent      = ((translated.to_f / template_count) * 100).round
-    line_str     = "#{translated}/#{template_count}"
-    percent_str  = "#{percent}%".rjust(6)
-
+    locale      = File.basename(po_path, '.po')
+    po_lines    = File.readlines(po_path)
+    po_entries  = parse_entries(po_lines).reject { |e| extract_id(e) == '""' }
+    translated  = po_entries.count { |e| has_translation?(e) }
+    percent     = template_count > 0 ? ((translated.to_f / template_count) * 100).round : 0
+    line_str    = "#{translated}/#{template_count}"
+    percent_str = "#{percent}%".rjust(6)
     Color.echo "  #{locale.ljust(8)} #{line_str.ljust(10)} #{percent_str}", :blue
     rows << "| #{locale.ljust(8)} | #{line_str.rjust(7)} | #{percent_str} |"
 end

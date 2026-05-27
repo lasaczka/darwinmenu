@@ -18,250 +18,380 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+
 #: contents/config/config.qml:6
-msgctxt "i18n@config.qml:6"
 msgid "General"
 msgstr "Geral"
 
+
 #: contents/config/config.qml:12
-msgctxt "i18n@config.qml:12"
 msgid "Buttons"
 msgstr "Botões"
 
+
 #: contents/config/config.qml:18
-msgctxt "i18n@config.qml:18"
 msgid "Custom commands"
 msgstr "Comandos Personalisados"
 
+
+#: contents/ui/ForceQuit/ConfirmationDialog.qml:81
+#. Preserve numbered parameters like %1, %2
+msgid "Do you want to force %1 to quit?"
+msgstr "Deseja forçar o encerramento de %1"
+
+
 #: contents/ui/ForceQuit/ConfirmationDialog.qml:87
-msgctxt "i18n@ConfirmationDialog.qml:87"
 msgid "You will lose any unsaved changes."
 msgstr "Você irá perder alterações não salvas"
 
 
 #: contents/ui/ForceQuit/ConfirmationDialog.qml:98
-msgctxt "i18n@ConfirmationDialog.qml:98"
 msgid "Cancel"
 msgstr "Cancelar"
+
 
 #: contents/ui/ForceQuit/ConfirmationDialog.qml:105
 msgctxt "force quit action"
 msgid "Force Quit"
 msgstr "Forçar Encerramento"
 
+
 #: contents/ui/ForceQuit/ForceQuit.qml:45
-msgctxt "i18n@ForceQuit.qml:45"
 msgid "If an app doesn't respond for a while, select its name and click Force Quit."
 msgstr "Se algum app parar e responder por um tempo, selecione o nome e clique em Forçar Encerramento"
 
+
 #: contents/ui/ForceQuit/ForceQuit.qml:130
-msgctxt "i18n@ForceQuit.qml:130"
 msgid "Configure this window to open on global shortcut."
 msgstr "Configure esta janela para abrir em um atalho global."
 
-#: contents/ui/MainMenuButton.qml:136
-msgctxt "i18n@MainMenuButton.qml:136"
-msgid "About This PC"
+
+#: contents/ui/ForceQuit/ForceQuit.qml:142
+#. Preserve numbered parameters like %1, %2
+msgid "You can open this window by pressing %1."
+msgstr "Você pode abrir esta janela pressionando %1."
+
+
+#: contents/ui/MainMenuButton.qml:185
+msgid "About this PC"
 msgstr "Sobre este PC"
 
-#: contents/ui/MainMenuButton.qml:152
-msgctxt "i18n@MainMenuButton.qml:152"
+
+#: contents/ui/MainMenuButton.qml:198
+msgid "Recent Items"
+msgstr "Items Recentes"
+
+
+#: contents/ui/MainMenuButton.qml:218
+msgid "Clear Menu"
+msgstr "Limpar Menu"
+
+
+#: contents/ui/MainMenuButton.qml:225
+msgid "Refresh"
+msgstr "Atualizar"
+
+
+#: contents/ui/MainMenuButton.qml:241
 msgid "Commands"
 msgstr "Comandos"
 
-#: contents/ui/MainMenuButton.qml:189
-msgctxt "i18n@MainMenuButton.qml:189"
+
+#: contents/ui/MainMenuButton.qml:278
 msgid "System Settings..."
 msgstr "Configurações de Sistema..."
 
-#: contents/ui/MainMenuButton.qml:196
-msgctxt "i18n@MainMenuButton.qml:196"
+
+#: contents/ui/MainMenuButton.qml:286
 msgid "App Store..."
 msgstr "Loja de Aplicativos..."
 
-#: contents/ui/MainMenuButton.qml:204
-msgctxt "i18n@MainMenuButton.qml:204"
-msgid "Force Quit..."
-msgstr "Forçar Encerramento"
 
-#: contents/ui/MainMenuButton.qml:213
-msgctxt "i18n@MainMenuButton.qml:213"
+#: contents/ui/MainMenuButton.qml:305
 msgid "Sleep"
 msgstr "Hibernar"
 
-#: contents/ui/MainMenuButton.qml:219
-msgctxt "i18n@MainMenuButton.qml:219"
-msgid "Restart..."
-msgstr "Reiniciar..."
 
-#: contents/ui/MainMenuButton.qml:225
-msgctxt "i18n@MainMenuButton.qml:225"
-msgid "Shut Down..."
-msgstr "Desligar..."
-
-#: contents/ui/MainMenuButton.qml:233
-msgctxt "i18n@MainMenuButton.qml:233"
-msgid "Lock Screen"
-msgstr "Bloquear"
-
-#: contents/ui/config/configButtons.qml:49
-msgctxt "i18n@configButtons.qml:49"
-msgid "System Settings"
-msgstr "Configurações de Sistema"
-
-#: contents/ui/config/configButtons.qml:50
-msgctxt "i18n@configButtons.qml:50"
-msgid "App Store"
-msgstr "Loja de Aplicativos"
-
-#: contents/ui/config/configButtons.qml:53
-msgctxt "i18n@configButtons.qml:53"
+#: contents/ui/MainMenuButton.qml:312
 msgid "Restart"
 msgstr "Reiniciar"
 
 
+#: contents/ui/MainMenuButton.qml:320
+msgid "the computer will restart"
+msgstr "o computador será reiniciado"
+
+
+#: contents/ui/MainMenuButton.qml:322
+msgid "Are you sure you want to restart you computer now?"
+msgstr "Tem certeza que deseja reiniciar o computador agora?"
+
+
+#: contents/ui/MainMenuButton.qml:334
+msgid "Shut Down"
+msgstr "Desligar"
+
+
+#: contents/ui/MainMenuButton.qml:342
+msgid "the computer will shut down"
+msgstr "o computadora será desligado"
+
+
+#: contents/ui/MainMenuButton.qml:344
+msgid "Are you sure you want to shut down you computer now?"
+msgstr "Tem certeza que deseja desligar o computador agora?"
+
+
+#: contents/ui/MainMenuButton.qml:358
+msgid "Lock Screen"
+msgstr "Bloquear Tela"
+
+
+#: contents/ui/MainMenuButton.qml:366
+#. Preserve numbered parameters like %1, %2
+msgid "Log Out %1"
+msgstr "Encerrar sessão de %1"
+
+
+#: contents/ui/MainMenuButton.qml:374
+msgid "Log Out"
+msgstr "Encerrar sessão"
+
+
+#: contents/ui/MainMenuButton.qml:375
+msgid "you will be logged out"
+msgstr "sua sessão será encerrada"
+
+
+#: contents/ui/MainMenuButton.qml:377
+msgid "Are you sure you want to quit all applications and log out now?"
+msgstr "Tem certeza que deseja encerrar todos os aplicativos e sair agora?"
+
+
+#: contents/ui/config/configButtons.qml:48
+msgid "About This PC"
+msgstr "Sobre este PC"
+
+
+#: contents/ui/config/configButtons.qml:49
+msgid "System Settings"
+msgstr "Configurações de Sistema"
+
+
+#: contents/ui/config/configButtons.qml:50
+msgid "App Store"
+msgstr "Loja de Aplicativos"
+
+
 #: contents/ui/config/configButtons.qml:54
-msgctxt "i18n@configButtons.qml:54"
 msgid "Shutdown"
 msgstr "Desligar"
 
 
-#: contents/ui/config/configButtons.qml:56
-msgctxt "i18n@configButtons.qml:56"
-msgid "Log Out"
-msgstr "Encerrar sessão"
-
-#: contents/ui/config/configCustom.qml:20
-msgctxt "i18n@configCustom.qml:20"
+#: contents/ui/config/configCustom.qml:41
 msgid "Show custom commands in separate menu"
 msgstr "Mostrar comandos personalizados em menu separado"
 
-#: contents/ui/config/configCustom.qml:26
-msgctxt "i18n@configCustom.qml:26"
+
+#: contents/ui/config/configCustom.qml:48
 msgid "Custom commands menu title"
 msgstr "Título do menu de comandos personalizados"
 
-#: contents/ui/config/configCustom.qml:40
-msgctxt "i18n@configCustom.qml:40"
+
+#: contents/ui/config/configCustom.qml:58
+msgid "Show icons for custom commands"
+msgstr "Mostrar comandos personalizados em menu separado"
+
+
+#: contents/ui/config/configCustom.qml:65
+msgid "Default icon name"
+msgstr "Nome do ícone padrão"
+
+
+#: contents/ui/config/configCustom.qml:81
 msgid "Add command"
 msgstr "Adicionar comando"
 
-#: contents/ui/config/configCustom.qml:51
-msgctxt "i18n@configCustom.qml:51"
+
+#: contents/ui/config/configCustom.qml:94
 msgid "Clear command list"
 msgstr "Limpar lista de comandos"
 
-#: contents/ui/config/configCustom.qml:89
-msgctxt "i18n@configCustom.qml:89"
+
+#: contents/ui/config/configCustom.qml:166
 msgid "Title"
 msgstr "Titulo"
 
-#: contents/ui/config/configCustom.qml:99
-msgctxt "i18n@configCustom.qml:99"
+
+#: contents/ui/config/configCustom.qml:174
 msgid "Command"
 msgstr "Comando"
 
-#: contents/ui/config/configGeneral.qml:36
-msgctxt "i18n@configGeneral.qml:36"
-msgid "Main"
-msgstr "Principal"
 
-#: contents/ui/config/configGeneral.qml:45
-msgctxt "i18n@configGeneral.qml:45"
-msgid "Button shape"
-msgstr "Formato do Botão"
-
-#: contents/ui/config/configGeneral.qml:46
-msgctxt "i18n@configGeneral.qml:46"
-msgid "Rectangle"
-msgstr "Retangulo"
-
-#: contents/ui/config/configGeneral.qml:60
-msgctxt "i18n@configGeneral.qml:60"
-msgid "Global shortcut opens:"
-msgstr "Atalho global abre:"
-
-#: contents/ui/config/configGeneral.qml:61
-msgctxt "i18n@configGeneral.qml:61"
-msgid "Plasmoid"
-msgstr "Plasmoid"
-
-#: contents/ui/config/configGeneral.qml:70
-msgctxt "i18n@configGeneral.qml:70"
+#: contents/ui/config/configCustom.qml:182
 msgid "Icon"
 msgstr "Icone"
 
-#: contents/ui/config/configGeneral.qml:160
+
+#: contents/ui/config/configGeneral.qml:41
+msgid "Main"
+msgstr "Principal"
+
+
+#: contents/ui/config/configGeneral.qml:50
+msgid "Button shape"
+msgstr "Formato do Botão"
+
+
+#: contents/ui/config/configGeneral.qml:51
+msgid "Rectangle"
+msgstr "Retangulo"
+
+
+#: contents/ui/config/configGeneral.qml:52
+msgid "Square"
+msgstr "Quadrado"
+
+
+#: contents/ui/config/configGeneral.qml:66
+msgid "Global shortcut opens:"
+msgstr "Atalho global abre:"
+
+
+#: contents/ui/config/configGeneral.qml:67
+msgid "Plasmoid"
+msgstr "Plasmoid"
+
+
+#: contents/ui/config/configGeneral.qml:75
+msgid "Menu items"
+msgstr "Itens do Menu"
+
+
+#: contents/ui/config/configGeneral.qml:76
+msgid "Show icons next to menu items"
+msgstr "Mostrar ícones ao lado dos itens do menu"
+
+
+#: contents/ui/config/configGeneral.qml:83
+msgid "Power Actions"
+msgstr "Ações de Confirmação"
+
+
+#: contents/ui/config/configGeneral.qml:87
+msgid "Power Dialog"
+msgstr "Diálogo de Confirmação"
+
+
+#: contents/ui/config/configGeneral.qml:88
+msgid "Use dialog box instead of lockscreen"
+msgstr "Usar caixa de diálogo em vez da tela de bloequeio"
+
+
+#: contents/ui/config/configGeneral.qml:95
+msgid "Countdown Time"
+msgstr "Contagem Regressiva"
+
+
+#: contents/ui/config/configGeneral.qml:103
+msgid "Quick action"
+msgstr "Ação rápida"
+
+
+#: contents/ui/config/configGeneral.qml:104
+msgid "Skip confirmation when Action key is pressed"
+msgstr "Pular confirmação ao pressionar a tecla de ação"
+
+
+#: contents/ui/config/configGeneral.qml:112
+msgid "Quick action shortcut"
+msgstr "Atalho de Ação rápida"
+
+
+#: contents/ui/config/configGeneral.qml:122
+msgid "Clear field"
+msgstr "Limpar o campo"
+
+
+#: contents/ui/config/configGeneral.qml:130
+msgid "Reset default"
+msgstr "Redefinir padrão"
+
+
+#: contents/ui/config/configGeneral.qml:231
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose…"
 msgstr "Escolha..."
 
-#: contents/ui/config/configGeneral.qml:165
+
+#: contents/ui/config/configGeneral.qml:236
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "Limpar icone"
 
-#: contents/ui/config/configGeneral.qml:182
-msgctxt "i18n@configGeneral.qml:182"
+
+#: contents/ui/config/configGeneral.qml:253
 msgid "Icon size"
 msgstr "Tamanho do icone"
 
-#: contents/ui/config/configGeneral.qml:183
-msgctxt "i18n@configGeneral.qml:183"
+
+#: contents/ui/config/configGeneral.qml:254
 msgid "Relative"
 msgstr "Relativo"
 
-#: contents/ui/config/configGeneral.qml:186
-msgctxt "i18n@configGeneral.qml:186"
+
+#: contents/ui/config/configGeneral.qml:257
 msgid "Fixed"
 msgstr "Fixo"
 
-#: contents/ui/config/configGeneral.qml:252
-msgctxt "i18n@configGeneral.qml:252"
+
+#: contents/ui/config/configGeneral.qml:323
 msgid "Preview icon size"
 msgstr "Visualizar tamanho do icone"
 
-#: contents/ui/config/configGeneral.qml:267
-msgctxt "i18n@configGeneral.qml:267"
+
+#: contents/ui/config/configGeneral.qml:338
 msgid "Fit to root element"
 msgstr "Ajustar ao elemento raiz"
 
-#: contents/ui/config/configGeneral.qml:300
-msgctxt "i18n@configGeneral.qml:300"
+
+#: contents/ui/config/configGeneral.qml:371
 msgid "Override actions"
 msgstr "Sobreescrever ações"
 
-#: contents/ui/config/configGeneral.qml:310
-msgctxt "i18n@configGeneral.qml:310"
+
+#: contents/ui/config/configGeneral.qml:381
 msgid "About This PC action"
 msgstr "Ação sobre este PC"
 
-#: contents/ui/config/configGeneral.qml:311
-msgctxt "i18n@configGeneral.qml:311"
+
+#: contents/ui/config/configGeneral.qml:382
 msgid "System"
 msgstr "Sistema"
 
-#: contents/ui/config/configGeneral.qml:325
-msgctxt "i18n@configGeneral.qml:325"
+
+#: contents/ui/config/configGeneral.qml:396
 msgid "About this PC command"
 msgstr "Comando Sobre este PC"
 
-#: contents/ui/config/configGeneral.qml:327
-msgctxt "i18n@configGeneral.qml:327"
+
+#: contents/ui/config/configGeneral.qml:398
 msgid "Type here to override command"
 msgstr "Digite pra sobreescrever o comando"
 
-#: contents/ui/config/configGeneral.qml:335
-msgctxt "i18n@configGeneral.qml:335"
-msgid "Clear field"
-msgstr "Limpar o campo"
 
-#: contents/ui/config/configGeneral.qml:343
-msgctxt "i18n@configGeneral.qml:343"
-msgid "Reset default"
-msgstr "Redefinir padrão"
-
-#: contents/ui/config/configGeneral.qml:358
-msgctxt "i18n@configGeneral.qml:358"
+#: contents/ui/config/configGeneral.qml:429
 msgid "App Store command"
 msgstr "Comando Loja de Aplicativos"
+
+
+#: contents/ui/dialog/PowerDialog.qml:102
+#. Preserve numbered parameters like %1, %2
+msgid "If you do nothing, %1 automatically in (%2) seconds."
+msgstr "Se você não fizer nada, %1 automaticamente em (%2) segundos."
+
+
+#: contents/ui/dialog/PowerDialog.qml:107
+msgid "Reopen windows when loggin back in"
+msgstr "Reabrir janelas ao iniciar sessão novamente"
+

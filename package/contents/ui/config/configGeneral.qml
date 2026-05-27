@@ -21,6 +21,10 @@ KCM.SimpleKCM {
     property string cfg_customButtonImage: Plasmoid.configuration.customButtonImage
     property bool cfg_resizeIconToRoot: resizeIconToRoot.checked
     property bool cfg_showMenuItemIcons: Plasmoid.configuration.showMenuItemIcons
+    property bool cfg_usePowerDialog: Plasmoid.configuration.usePowerDialog
+    property int cfg_powerDialogCountdown: Plasmoid.configuration.powerDialogCountdown
+    property bool cfg_quickAction: Plasmoid.configuration.quickAction
+    property string cgf_quickActionModifier: Plasmoid.configuration.quickActionModifier
 
     property bool cfg_shortcutOpensPlasmoid: Plasmoid.configuration.shortcutOpensPlasmoid
     property bool cfg_aboutThisPCUseCommand: Plasmoid.configuration.aboutThisPCUseCommand
@@ -44,8 +48,9 @@ KCM.SimpleKCM {
             id: useRectangleButtonShape
             currentIndex: configGeneral.cfg_useRectangleButtonShape ? 0 : 1
             Kirigami.FormData.label: i18n("Button shape")
-            model: [i18n("Rectangle"), i18n("Square")]
-
+            model: [i18n("Rectangle"),
+                    i18n("Square")]
+            //use separate lines so extract.rb be able to capture both
             onCurrentIndexChanged: {
                 configGeneral.cfg_useRectangleButtonShape = model[currentIndex] === i18n("Rectangle")
             }
@@ -71,6 +76,64 @@ KCM.SimpleKCM {
             text: i18n("Show icons next to menu items")
             checked: configGeneral.cfg_showMenuItemIcons
             onToggled: configGeneral.cfg_showMenuItemIcons = checked
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Power Actions")
+        }
+
+        CheckBox {
+            Kirigami.FormData.label: i18n("Power Dialog")
+            text: i18n("Use dialog box instead of lockscreen")
+            checked: configGeneral.cfg_usePowerDialog
+            onToggled: configGeneral.cfg_usePowerDialog = checked
+        }
+
+        SpinBox {
+            visible: configGeneral.cfg_usePowerDialog
+            Kirigami.FormData.label: i18n("Countdown Time")
+            from: 5
+            to: 60
+            value: configGeneral.cfg_powerDialogCountdown
+            onValueChanged: configGeneral.cfg_powerDialogCountdown = value
+        }
+
+        CheckBox {
+            Kirigami.FormData.label: i18n("Quick action")
+            text: i18n("Skip confirmation when Action key is pressed")
+            checked: configGeneral.cfg_quickAction
+            onToggled: configGeneral.cfg_quickAction = checked
+        }
+
+        Kirigami.ActionTextField {
+            id: quickActionModifier
+            visible: configGeneral.cfg_quickAction
+            Kirigami.FormData.label: i18n("Quick action shortcut")
+            text: Plasmoid.configuration.quickActionModifier ?? "Ctrl+Space"
+            placeholderText: "Ctrl+Space"
+            onTextEdited: {
+                configGeneral.cfg_quickActionModifier = quickActionModifier.text
+            }
+            rightActions: [
+                Action {
+                    icon.name: "edit-clear"
+                    enabled: quickActionModifier.text !== ""
+                    text: i18n("Clear field")
+                    onTriggered: {
+                        quickActionModifier.clear()
+                        configGeneral.cfg_quickActionModifier = ""
+                    }
+                },
+                Action {
+                    icon.name: "edit-reset"
+                    text: i18n("Reset default")
+                    onTriggered: {
+                        quickActionModifier.text = Plasmoid.configuration.quickActionModifierDefault
+                        configGeneral.cfg_quickActionModifier = Plasmoid.configuration.quickActionModifierDefault
+                    }
+                }
+            ]
         }
 
         Kirigami.Separator {

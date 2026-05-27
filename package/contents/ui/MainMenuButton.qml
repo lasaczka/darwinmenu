@@ -14,6 +14,8 @@ import org.kde.plasma.plasma5support as Plasma5Support
 AbstractButton {
     id: menuButton
 
+    focus: true
+
     readonly property string appStoreCommand: Plasmoid.configuration.appStoreCommand
         ?? Plasmoid.configuration.appStoreCommandDefault
     readonly property string aboutThisPCCommand: Plasmoid.configuration.aboutThisPCCommand
@@ -28,8 +30,14 @@ AbstractButton {
     readonly property bool showMenuItemIcons: Plasmoid.configuration.showMenuItemIcons ?? false
     readonly property bool showCustomCommandIcons: Plasmoid.configuration.showCustomCommandIcons ?? true
     readonly property string defaultCustomCommandIcon: Plasmoid.configuration.defaultCustomCommandIcon ?? "utilities-terminal"
+    readonly property bool usePowerDialog: Plasmoid.configuration.usePowerDialog ?? false
+    readonly property bool quickAction: Plasmoid.configuration.quickAction ?? false
+    readonly property string quickActionKeys: Plasmoid.configuration.quickActionModifier ?? "Ctrl+Space"
+    readonly property string ellipsis: "\u2026"
+    readonly property string ellipsisPlaceholder: "\u2007"
 
     property var customCommands: []
+    property bool actionKeyPressed : false
 
     function reloadCustomCommands() {
         const commands = []
@@ -61,6 +69,21 @@ AbstractButton {
             ? iconName
             : (defaultCustomCommandIcon?.length > 0 ? defaultCustomCommandIcon : "utilities-terminal")
     }
+
+    // QtLabs.MenuItem renders native menus outside the QML tree so once opened, ellipsis value doesn't bind and it's not longer evaluated again.
+    // So the Keys.onPressed approach works but has not visual feedback which leads to user confusion.
+    // The toggle solution using hidden QtLabs.MenuItem instead works because run as native menu.
+    //
+    //Keys.onPressed: function (event) {
+    //    if (!menuButton.quickAction || !menu.isOpened) return
+    //    if (event.key === Qt.Key_Space && (event.modifiers & Qt.ControlModifier)){
+    //        if (!event.isAutoRepeat){
+    //            menuButton.actionKeyPressed = !menuButton.actionKeyPressed
+    //            ellipsis = "\u2007"
+    //        }
+    //        event.accepted = true
+    //    }
+    //}
 
     RecentItems {
         id: recentItems
@@ -163,13 +186,22 @@ AbstractButton {
         readonly property int customCommandsEntryStartIndex: 4
 
         QtLabs.MenuItem {
+            visible: false
+            shortcut: quickActionKeys
+            enabled: menu.isOpened & menuButton.quickAction
+            onTriggered: {
+                menuButton.actionKeyPressed = !menuButton.actionKeyPressed
+            }
+        }
+
+        QtLabs.MenuItem {
             id: aboutThisPCMenuItem
             visible: Plasmoid.configuration.showAboutThisPCButton
-            text: i18n("About This PC")
+            text: i18n("About this PC")
             icon.name: menuButton.showMenuItemIcons ? "computer-laptop" : ""
             onTriggered: menuButton.aboutThisPCUseCommand
                 ? executable.exec(menuButton.aboutThisPCCommand)
-                : KCMLauncher.openInfoCenter("")
+                : executable.exec("kcmshell6 kcm_about-distro")
         }
 
         QtLabs.MenuSeparator {
@@ -275,7 +307,7 @@ AbstractButton {
 
         QtLabs.MenuItem {
             visible: Plasmoid.configuration.showForceQuitButton
-            text: i18n("Force Quit...")
+            text: i18n("Force Quit")
             icon.name: menuButton.showMenuItemIcons ? "process-stop-symbolic" : ""
             onTriggered: root.forceQuit.show()
             shortcut: Plasmoid.configuration.shortcutOpensPlasmoid ? null : plasmoid.globalShortcut
@@ -292,16 +324,46 @@ AbstractButton {
 
         QtLabs.MenuItem {
             visible: Plasmoid.configuration.showRestartButton
-            text: i18n("Restart...")
+            text: i18n("Restart") + (menuButton.actionKeyPressed ? menuButton.ellipsisPlaceholder : menuButton.ellipsis)
             icon.name: menuButton.showMenuItemIcons ? "system-reboot" : ""
-            onTriggered: sm.requestReboot()
+            onTriggered: {
+                if (menuButton.actionKeyPressed){
+                    sm.requestReboot(Sessions.SessionManagement.Skip)
+                }
+                else if (menuButton.usePowerDialog) {
+                    root.powerDialog.dialogTitle = i18n("Restart")
+                    root.powerDialog.dialogAction = i18n("the computer will restart")
+                    root.powerDialog.dialogIcon = "system-reboot"
+                    root.powerDialog.dialogMessage = i18n("Are you sure you want to restart you computer now?")
+                    root.powerDialog.confirmAction = function(){sm.requestReboot(Sessions.SessionManagement.Skip)}
+                    root.powerDialog.show()
+                }
+                else {
+                    sm.requestReboot()
+                }
+            }
         }
 
         QtLabs.MenuItem {
             visible: Plasmoid.configuration.showShutdownButton
-            text: i18n("Shut Down...")
+            text: i18n("Shut Down") + (menuButton.actionKeyPressed ? menuButton.ellipsisPlaceholder : menuButton.ellipsis)
             icon.name: menuButton.showMenuItemIcons ? "system-shutdown" : ""
-            onTriggered: sm.requestShutdown()
+            onTriggered: {
+                if (menuButton.actionKeyPressed){
+                    sm.requestShutdown(Sessions.SessionManagement.Skip)
+                }
+                else if (menuButton.usePowerDialog){
+                    root.powerDialog.dialogTitle = i18n("Shut Down")
+                    root.powerDialog.dialogAction = i18n("the computer will shut down")
+                    root.powerDialog.dialogIcon = "system-shutdown"
+                    root.powerDialog.dialogMessage = i18n("Are you sure you want to shut down you computer now?")
+                    root.powerDialog.confirmAction = function(){sm.requestShutdown(Sessions.SessionManagement.Skip)}
+                    root.powerDialog.show()
+                }
+                else {
+                    sm.requestShutdown()
+                }
+            }
         }
 
         QtLabs.MenuSeparator {}
@@ -316,15 +378,33 @@ AbstractButton {
 
         QtLabs.MenuItem {
             visible: Plasmoid.configuration.showLogOutButton
-            text: i18n("Log Out %1...", kUser.fullName)
+            text: i18n("Log Out %1", kUser.fullName) + (menuButton.actionKeyPressed ? menuButton.ellipsisPlaceholder : menuButton.ellipsis)
             icon.name: menuButton.showMenuItemIcons ? "system-log-out" : ""
             shortcut: "Ctrl+Alt+Delete"
-            onTriggered: sm.requestLogout()
+            onTriggered: {
+                if (menuButton.actionKeyPressed){
+                    sm.requestLogout(Sessions.SessionManagement.Skip)
+                }
+                else if (menuButton.usePowerDialog){
+                    root.powerDialog.dialogTitle = i18n("Log Out")
+                    root.powerDialog.dialogAction = i18n("you will be logged out")
+                    root.powerDialog.dialogIcon = "system-log-out"
+                    root.powerDialog.dialogMessage = i18n("Are you sure you want to quit all applications and log out now?")
+                    root.powerDialog.confirmAction = function(){sm.requestLogout(Sessions.SessionManagement.Skip)}
+                    root.powerDialog.show()
+                }
+                else {
+                    sm.requestLogout()
+                }
+            }
         }
 
-        onAboutToHide: menu.isOpened = false
+        onAboutToHide: {
+            menu.isOpened = false
+        }
         onAboutToShow: {
             menu.isOpened = true
+            menuButton.actionKeyPressed = false
             recentItems.loadRecentItems()
         }
     }
@@ -333,12 +413,25 @@ AbstractButton {
         id: executable
         engine: "executable"
         connectedSources: []
-        onNewData: function(source, data) {
-            disconnectSource(source)
+
+        property var pendingCallback: null
+
+        function exec(cmd, callback) {
+            pendingCallback = callback
+            connectSource(cmd)
         }
 
-        function exec(cmd) {
-            executable.connectSource(cmd)
+        onNewData: function(source, data) {
+            const exitCode = data["exit code"]
+
+            disconnectSource(source)
+
+            if (pendingCallback) {
+                const cb = pendingCallback
+                pendingCallback = null
+
+                cb(exitCode === 0)
+            }
         }
     }
 
