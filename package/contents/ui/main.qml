@@ -12,6 +12,7 @@ PlasmoidItem  {
         : plasmoid.configuration.icon
 
     property Window forceQuit
+    property Window powerDialog
 
     preferredRepresentation: fullRepresentation
     compactRepresentation: null
@@ -32,6 +33,14 @@ PlasmoidItem  {
             return;
         }
         forceQuit = component.createObject(root)
+
+        const powerDialogComponent = Qt.createComponent("dialog/PowerDialog.qml")
+        if (powerDialogComponent.status !== Component.Ready) {
+             if (powerDialogComponent.status === Component.Error)
+                 console.debug("Error:" + powerDialogComponent.errorString());
+             return;
+        }
+        powerDialog = powerDialogComponent.createObject(root)
     }
 
     Plasmoid.icon: root.icon

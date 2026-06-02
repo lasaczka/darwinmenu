@@ -28,10 +28,11 @@ Find.find(SOURCE_DIR) do |path|
 
     File.readlines(path, chomp: true).each_with_index do |line, index|
         KEYWORDS.each do |kw, meta|
-            if line =~ /#{kw}\(\s*"((?:[^"\\]|\\.)*)"(?:\s*,\s*"((?:[^"\\]|\\.)*)")?\s*\)/
+            if line =~ /#{kw}\(\s*"((?:[^"\\]|\\.)*)"(?:\s*,\s*"((?:[^"\\]|\\.)*)")?[^)]*\)/
                     if meta[:args] == 1
-                msgid   = $1.encode('UTF-8')
-                context = "#{kw}@#{file_key}:#{index + 1}"
+                        msgid   = $1.encode('UTF-8')
+                        #context = "#{kw}@#{file_key}:#{index + 1}"
+                        context = nil
             elsif meta[:args] == 2
                 context = $1.encode('UTF-8')
                 msgid   = $2&.encode('UTF-8')
@@ -104,7 +105,7 @@ File.open(OUTPUT_FILE, 'w:utf-8') do |f|
     deduped.each_value do |entry|
         f.puts "#: #{entry[:file]}:#{entry[:line]}"
         f.puts "#. Preserve numbered parameters like %1, %2" if entry[:msgid] =~ /%[0-9]/
-                f.puts "msgctxt \"#{entry[:context].gsub(/["\\]/) { "\\#{_1}" }}\""
+        f.puts "msgctxt \"#{entry[:context].gsub(/["\\]/) { "\\#{_1}" }}\"" if entry[:context]
         f.puts "msgid \"#{entry[:msgid].gsub(/["\\]/) { "\\#{_1}" }}\""
         f.puts "msgstr \"\""
         f.puts

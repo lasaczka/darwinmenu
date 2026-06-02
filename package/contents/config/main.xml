@@ -64,6 +64,26 @@
       <label>Show icons next to menu items</label>
       <default>false</default>
     </entry>
+
+    <entry name="usePowerDialog" type="Bool">
+      <label>Use dialog box instead of lockscreen</label>
+      <default>false</default>
+    </entry>
+
+    <entry name="powerDialogCountdown" type="Int">
+      <label>Power dialog countdown in seconds</label>
+      <default>30</default>
+    </entry>
+
+    <entry name="quickAction" type="Bool">
+      <label>Skip confirmation when Action key is pressed</label>
+      <default>false</default>
+    </entry>
+
+    <entry name="quickActionModifier" type="String">
+      <label>Modifier key for quick action</label>
+      <default>Ctrl+Space</default>
+    </entry>
   </group>
 
   <group name="Custom">
