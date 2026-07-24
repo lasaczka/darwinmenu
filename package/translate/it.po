@@ -37,7 +37,13 @@ msgid "Cancel"
 msgstr "Annulla"
 
 #: contents/ui/ForceQuit/ConfirmationDialog.qml:105
+#: contents/ui/ForceQuit/ForceQuit.qml:151
 msgctxt "force quit action"
+msgid "Force Quit"
+msgstr "Uscita forzata"
+
+#: contents/ui/ForceQuit/ForceQuit.qml:11
+msgctxt "force quit title"
 msgid "Force Quit"
 msgstr "Uscita forzata"
 
@@ -81,6 +87,10 @@ msgstr "Impostazioni di Sistema..."
 #: contents/ui/MainMenuButton.qml:286
 msgid "App Store..."
 msgstr "App Store..."
+
+#: contents/ui/MainMenuButton.qml:310
+msgid "Force Quit"
+msgstr "Uscita forzata"
 
 #: contents/ui/MainMenuButton.qml:305
 msgid "Sleep"
