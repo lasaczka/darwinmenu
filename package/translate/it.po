@@ -1,0 +1,315 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Darwin Menu\n"
+"Report-Msgid-Bugs-To: https://github.com/lasaczka\n"
+"POT-Creation-Date: 2026-05-25 03:12-0400\n"
+"PO-Revision-Date: 2026-07-24 00:00+0200\n"
+"Last-Translator: OLife - Gennaro Palumbo <pal.gennaro@gmail.com>\n"
+"Language-Team: Italian <it@li.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: contents/config/config.qml:6
+msgid "General"
+msgstr "Generali"
+
+#: contents/config/config.qml:12
+msgid "Buttons"
+msgstr "Pulsanti"
+
+#: contents/config/config.qml:18
+msgid "Custom commands"
+msgstr "Comandi personalizzati"
+
+#: contents/ui/ForceQuit/ConfirmationDialog.qml:81
+#. Preserve numbered parameters like %1, %2
+msgid "Do you want to force %1 to quit?"
+msgstr "Vuoi forzare l'uscita da %1?"
+
+#: contents/ui/ForceQuit/ConfirmationDialog.qml:87
+msgid "You will lose any unsaved changes."
+msgstr "Le modifiche non salvate andranno perse."
+
+#: contents/ui/ForceQuit/ConfirmationDialog.qml:98
+msgid "Cancel"
+msgstr "Annulla"
+
+#: contents/ui/ForceQuit/ConfirmationDialog.qml:105
+msgctxt "force quit action"
+msgid "Force Quit"
+msgstr "Uscita forzata"
+
+#: contents/ui/ForceQuit/ForceQuit.qml:45
+msgid "If an app doesn't respond for a while, select its name and click Force Quit."
+msgstr "Se un'app non risponde per un po', seleziona il suo nome e fai clic su Uscita forzata."
+
+#: contents/ui/ForceQuit/ForceQuit.qml:130
+msgid "Configure this window to open on global shortcut."
+msgstr "Configura questa finestra per aprirsi con una scorciatoia globale."
+
+#: contents/ui/ForceQuit/ForceQuit.qml:142
+#. Preserve numbered parameters like %1, %2
+msgid "You can open this window by pressing %1."
+msgstr "Puoi aprire questa finestra premendo %1."
+
+#: contents/ui/MainMenuButton.qml:185
+msgid "About this PC"
+msgstr "Informazioni su questo computer"
+
+#: contents/ui/MainMenuButton.qml:198
+msgid "Recent Items"
+msgstr "Elementi recenti"
+
+#: contents/ui/MainMenuButton.qml:218
+msgid "Clear Menu"
+msgstr "Cancella menu"
+
+#: contents/ui/MainMenuButton.qml:225
+msgid "Refresh"
+msgstr "Aggiorna"
+
+#: contents/ui/MainMenuButton.qml:241
+msgid "Commands"
+msgstr "Comandi"
+
+#: contents/ui/MainMenuButton.qml:278
+msgid "System Settings..."
+msgstr "Impostazioni di Sistema..."
+
+#: contents/ui/MainMenuButton.qml:286
+msgid "App Store..."
+msgstr "App Store..."
+
+#: contents/ui/MainMenuButton.qml:305
+msgid "Sleep"
+msgstr "Sospendi"
+
+#: contents/ui/MainMenuButton.qml:312
+msgid "Restart"
+msgstr "Riavvia"
+
+#: contents/ui/MainMenuButton.qml:320
+msgid "the computer will restart"
+msgstr "il computer verrà riavviato"
+
+#: contents/ui/MainMenuButton.qml:322
+msgid "Are you sure you want to restart you computer now?"
+msgstr "Riavviare il computer adesso?"
+
+#: contents/ui/MainMenuButton.qml:334
+msgid "Shut Down"
+msgstr "Spegni"
+
+#: contents/ui/MainMenuButton.qml:342
+msgid "the computer will shut down"
+msgstr "il computer verrà spento"
+
+#: contents/ui/MainMenuButton.qml:344
+msgid "Are you sure you want to shut down you computer now?"
+msgstr "Spegnere il computer adesso?"
+
+#: contents/ui/MainMenuButton.qml:358
+msgid "Lock Screen"
+msgstr "Blocca schermo"
+
+#: contents/ui/MainMenuButton.qml:366
+#. Preserve numbered parameters like %1, %2
+msgid "Log Out %1"
+msgstr "Esci da %1"
+
+#: contents/ui/MainMenuButton.qml:374
+msgid "Log Out"
+msgstr "Esci"
+
+#: contents/ui/MainMenuButton.qml:375
+msgid "you will be logged out"
+msgstr "la sessione verrà chiusa"
+
+#: contents/ui/MainMenuButton.qml:377
+msgid "Are you sure you want to quit all applications and log out now?"
+msgstr "Uscire da tutte le applicazioni e chiudere la sessione adesso?"
+
+#: contents/ui/config/configButtons.qml:48
+msgid "About This PC"
+msgstr "Informazioni su questo computer"
+
+#: contents/ui/config/configButtons.qml:49
+msgid "System Settings"
+msgstr "Impostazioni di Sistema"
+
+#: contents/ui/config/configButtons.qml:50
+msgid "App Store"
+msgstr "App Store"
+
+#: contents/ui/config/configButtons.qml:54
+msgid "Shutdown"
+msgstr "Spegni"
+
+#: contents/ui/config/configCustom.qml:41
+msgid "Show custom commands in separate menu"
+msgstr "Mostra i comandi personalizzati in un menu separato"
+
+#: contents/ui/config/configCustom.qml:48
+msgid "Custom commands menu title"
+msgstr "Titolo del menu comandi personalizzati"
+
+#: contents/ui/config/configCustom.qml:58
+msgid "Show icons for custom commands"
+msgstr "Mostra icone per i comandi personalizzati"
+
+#: contents/ui/config/configCustom.qml:65
+msgid "Default icon name"
+msgstr "Nome icona predefinita"
+
+#: contents/ui/config/configCustom.qml:81
+msgid "Add command"
+msgstr "Aggiungi comando"
+
+#: contents/ui/config/configCustom.qml:94
+msgid "Clear command list"
+msgstr "Cancella elenco comandi"
+
+#: contents/ui/config/configCustom.qml:166
+msgid "Title"
+msgstr "Titolo"
+
+#: contents/ui/config/configCustom.qml:174
+msgid "Command"
+msgstr "Comando"
+
+#: contents/ui/config/configCustom.qml:182
+msgid "Icon"
+msgstr "Icona"
+
+#: contents/ui/config/configGeneral.qml:41
+msgid "Main"
+msgstr "Principale"
+
+#: contents/ui/config/configGeneral.qml:50
+msgid "Button shape"
+msgstr "Forma pulsante"
+
+#: contents/ui/config/configGeneral.qml:51
+msgid "Rectangle"
+msgstr "Rettangolo"
+
+#: contents/ui/config/configGeneral.qml:52
+msgid "Square"
+msgstr "Quadrato"
+
+#: contents/ui/config/configGeneral.qml:66
+msgid "Global shortcut opens:"
+msgstr "La scorciatoia globale apre:"
+
+#: contents/ui/config/configGeneral.qml:67
+msgid "Plasmoid"
+msgstr "Plasmoid"
+
+#: contents/ui/config/configGeneral.qml:75
+msgid "Menu items"
+msgstr "Voci di menu"
+
+#: contents/ui/config/configGeneral.qml:76
+msgid "Show icons next to menu items"
+msgstr "Mostra icone accanto alle voci di menu"
+
+#: contents/ui/config/configGeneral.qml:83
+msgid "Power Actions"
+msgstr "Azioni di spegnimento"
+
+#: contents/ui/config/configGeneral.qml:87
+msgid "Power Dialog"
+msgstr "Dialogo di conferma"
+
+#: contents/ui/config/configGeneral.qml:88
+msgid "Use dialog box instead of lockscreen"
+msgstr "Usa finestra di dialogo invece della schermata di blocco"
+
+#: contents/ui/config/configGeneral.qml:95
+msgid "Countdown Time"
+msgstr "Tempo di conto alla rovescia"
+
+#: contents/ui/config/configGeneral.qml:103
+msgid "Quick action"
+msgstr "Azione rapida"
+
+#: contents/ui/config/configGeneral.qml:104
+msgid "Skip confirmation when Action key is pressed"
+msgstr "Salta conferma quando viene premuto il tasto Azione"
+
+#: contents/ui/config/configGeneral.qml:112
+msgid "Quick action shortcut"
+msgstr "Scorciatoia azione rapida"
+
+#: contents/ui/config/configGeneral.qml:122
+msgid "Clear field"
+msgstr "Cancella campo"
+
+#: contents/ui/config/configGeneral.qml:130
+msgid "Reset default"
+msgstr "Ripristina predefinito"
+
+#: contents/ui/config/configGeneral.qml:231
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose…"
+msgstr "Scegli…"
+
+#: contents/ui/config/configGeneral.qml:236
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr "Rimuovi icona"
+
+#: contents/ui/config/configGeneral.qml:253
+msgid "Icon size"
+msgstr "Dimensione icona"
+
+#: contents/ui/config/configGeneral.qml:254
+msgid "Relative"
+msgstr "Relativa"
+
+#: contents/ui/config/configGeneral.qml:257
+msgid "Fixed"
+msgstr "Fissa"
+
+#: contents/ui/config/configGeneral.qml:323
+msgid "Preview icon size"
+msgstr "Anteprima dimensione icona"
+
+#: contents/ui/config/configGeneral.qml:338
+msgid "Fit to root element"
+msgstr "Adatta all'elemento radice"
+
+#: contents/ui/config/configGeneral.qml:371
+msgid "Override actions"
+msgstr "Sostituisci azioni"
+
+#: contents/ui/config/configGeneral.qml:381
+msgid "About This PC action"
+msgstr "Azione Informazioni su questo computer"
+
+#: contents/ui/config/configGeneral.qml:382
+msgid "System"
+msgstr "Sistema"
+
+#: contents/ui/config/configGeneral.qml:396
+msgid "About this PC command"
+msgstr "Comando Informazioni su questo computer"
+
+#: contents/ui/config/configGeneral.qml:398
+msgid "Type here to override command"
+msgstr "Digita qui per sostituire il comando"
+
+#: contents/ui/config/configGeneral.qml:429
+msgid "App Store command"
+msgstr "Comando App Store"
+
+#: contents/ui/dialog/PowerDialog.qml:102
+#. Preserve numbered parameters like %1, %2
+msgid "If you do nothing, %1 automatically in (%2) seconds."
+msgstr "Se non fai nulla, %1 automaticamente tra (%2) secondi."
+
+#: contents/ui/dialog/PowerDialog.qml:107
+msgid "Reopen windows when loggin back in"
+msgstr "Riapri le finestre al nuovo accesso"
